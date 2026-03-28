@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人作品集</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 登录界面 -->
+    <div class="login-page" id="loginPage">
+        <div class="login-container">
+            <h2>登录</h2>
+            <input type="text" id="username" placeholder="请输入用户名">
+            <input type="password" id="loginPassword" placeholder="请输入密码">
+            <button id="loginSubmit">登录</button>
+        </div>
+    </div>
+    
+    <!-- 主页面 -->
+    <div class="main-page" id="mainPage" style="display: none;">
+        <header>
+            <div class="logo" id="logoText">FORA</div>
+        </header>
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 id="heroTitle">个人介绍</h1>
+                    <p id="heroDescription">欢迎来到我的个人作品集，这里展示了我在美术、音乐、游戏、小说、剧本、漫画等领域的创作。</p>
+                </div>
+            </section>
+            <section class="timeline">
+                <h2 id="timelineTitle">创作年限</h2>
+                <div class="timeline-container" id="timelineContainer">
+                    <!-- 时间轴内容将通过JS动态生成 -->
+                </div>
+            </section>
+            <section class="works">
+                <div class="tags">
+                    <button class="tag active" data-tag="all">全部</button>
+                    <button class="tag" data-tag="美术">美术</button>
+                    <button class="tag" data-tag="音乐">音乐</button>
+                    <button class="tag" data-tag="游戏">游戏</button>
+                    <button class="tag" data-tag="小说">小说</button>
+                    <button class="tag" data-tag="剧本">剧本</button>
+                    <button class="tag" data-tag="漫画">漫画</button>
+                </div>
+                <div class="works-container" id="worksContainer">
+                    <!-- 作品内容将通过JS动态生成 -->
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p id="footerText">© 2026 个人作品集</p>
+        </footer>
+    </div>
+    
+    <!-- 作品详情页面 -->
+    <div class="work-detail-page" id="workDetailPage" style="display: none;">
+        <header>
+            <div class="logo" id="detailLogoText">FORA</div>
+            <button id="backBtn" class="back-button">← 返回</button>
+        </header>
+        <main>
+            <section class="work-detail">
+                <div class="work-detail-header">
+                    <span class="category" id="detailCategory"></span>
+                    <h1 id="detailTitle"></h1>
+                </div>
+                <div class="work-detail-content">
+                    <div class="work-detail-description" id="detailDescription"></div>
+                    <div class="work-detail-media" id="detailMedia">
+                        <!-- 媒体内容将通过JS动态生成 -->
+                    </div>
+                </div>
+                <div class="work-detail-actions">
+                    <button id="editWorkBtn" class="edit-button">编辑作品</button>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p id="detailFooterText">© 2026 个人作品集</p>
+        </footer>
+    </div>
+    
+    <!-- 管理面板 -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-panel-header">
+            <h3>管理面板</h3>
+            <button id="toggleAdminPanel" class="toggle-button">▼</button>
+        </div>
+        <div class="admin-panel-content" id="adminPanelContent">
+            <div class="settings-section">
+                <h4>网站设置</h4>
+                <label>
+                    <input type="checkbox" id="publicAccess"> 开放访问
+                </label>
+                <button id="editTextBtn">编辑文字内容</button>
+                <button id="editTimelineBtn">编辑时间轴</button>
+                <button id="themeSettingsBtn">主题设置</button>
+            </div>
+            <div class="works-section">
+                <h4>作品管理</h4>
+                <div class="password-form">
+                    <input type="password" id="worksPassword" placeholder="请输入作品管理密码">
+                    <button id="worksLoginBtn">登录</button>
+                </div>
+                <div class="admin-content" id="adminContent" style="display: none;">
+                    <h5>添加作品</h5>
+                    <form id="addWorkForm">
+                        <input type="text" id="workTitle" placeholder="作品标题">
+                        <select id="workCategory">
+                            <option value="美术">美术</option>
+                            <option value="音乐">音乐</option>
+                            <option value="游戏">游戏</option>
+                            <option value="小说">小说</option>
+                            <option value="剧本">剧本</option>
+                            <option value="漫画">漫画</option>
+                        </select>
+                        <textarea id="workDescription" placeholder="作品简介"></textarea>
+                        <div class="media-upload">
+                            <label>图片</label>
+                            <input type="file" id="workImages" accept="image/*" multiple>
+                        </div>
+                        <div class="media-upload">
+                            <label>音频</label>
+                            <input type="file" id="workAudios" accept="audio/*" multiple>
+                        </div>
+                        <button type="submit">添加</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 文字编辑模态框 -->
+    <div class="modal" id="editModal" style="display: none;">
+        <div class="modal-content">
+            <h3>编辑文字内容</h3>
+            <input type="text" id="editLogo" placeholder="网站标题">
+            <input type="text" id="editHeroTitle" placeholder="个人介绍标题">
+            <textarea id="editHeroDescription" placeholder="个人介绍内容"></textarea>
+            <input type="text" id="editTimelineTitle" placeholder="时间轴标题">
+            <input type="text" id="editFooter" placeholder="页脚信息">
+            <div class="modal-buttons">
+                <button id="saveEdit">保存</button>
+                <button id="cancelEdit">取消</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 作品编辑模态框 -->
+    <div class="modal" id="editWorkModal" style="display: none;">
+        <div class="modal-content">
+            <h3>编辑作品</h3>
+            <input type="text" id="editWorkTitle" placeholder="作品标题">
+            <select id="editWorkCategory">
+                <option value="美术">美术</option>
+                <option value="音乐">音乐</option>
+                <option value="游戏">游戏</option>
+                <option value="小说">小说</option>
+                <option value="剧本">剧本</option>
+                <option value="漫画">漫画</option>
+            </select>
+            <textarea id="editWorkDescription" placeholder="作品简介"></textarea>
+            <div class="media-upload">
+                <label>现有图片</label>
+                <div id="existingImages" class="existing-media"></div>
+            </div>
+            <div class="media-upload">
+                <label>添加图片（可多选）</label>
+                <input type="file" id="editWorkImages" accept="image/*" multiple>
+            </div>
+            <div class="media-upload">
+                <label>现有音频</label>
+                <div id="existingAudios" class="existing-media"></div>
+            </div>
+            <div class="media-upload">
+                <label>添加音频（可多选）</label>
+                <input type="file" id="editWorkAudios" accept="audio/*" multiple>
+            </div>
+            <div class="modal-buttons">
+                <button id="saveWorkEdit">保存</button>
+                <button id="cancelWorkEdit">取消</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 时间轴编辑模态框 -->
+    <div class="modal" id="editTimelineModal" style="display: none;">
+        <div class="modal-content">
+            <h3>编辑时间轴</h3>
+            <div id="timelineItems">
+                <!-- 时间轴项目将通过JS动态生成 -->
+            </div>
+            <button id="addTimelineItem">添加时间轴项目</button>
+            <div class="modal-buttons">
+                <button id="saveTimeline">保存</button>
+                <button id="cancelTimeline">取消</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 主题设置模态框 -->
+    <div class="modal" id="themeSettingsModal" style="display: none;">
+        <div class="modal-content">
+            <h3>主题设置</h3>
+            <div class="theme-option">
+                <label>背景类型</label>
+                <select id="backgroundType">
+                    <option value="color">纯色背景</option>
+                    <option value="gradient">渐变色背景</option>
+                    <option value="image">图片背景</option>
+                </select>
+            </div>
+            <div class="theme-option" id="colorOption">
+                <label>背景颜色</label>
+                <input type="color" id="backgroundColor" value="#f5f5f5">
+            </div>
+            <div class="theme-option" id="gradientOption" style="display: none;">
+                <label>渐变颜色 1</label>
+                <input type="color" id="gradientColor1" value="#4facfe">
+                <label>渐变颜色 2</label>
+                <input type="color" id="gradientColor2" value="#00f2fe">
+            </div>
+            <div class="theme-option" id="imageOption" style="display: none;">
+                <label>背景图片</label>
+                <input type="file" id="backgroundImage" accept="image/*">
+            </div>
+            <div class="theme-option">
+                <label>添加Emoji</label>
+                <input type="text" id="emojiInput" placeholder="输入Emoji">
+                <button id="addEmoji">添加</button>
+            </div>
+            <div class="theme-option">
+                <label>Emoji效果</label>
+                <select id="emojiEffect">
+                    <option value="none">无效果</option>
+                    <option value="scatter">散布效果</option>
+                    <option value="fill">填充效果</option>
+                    <option value="rain">下雨效果</option>
+                    <option value="float">漂浮效果</option>
+                </select>
+            </div>
+            <div class="modal-buttons">
+                <button id="saveTheme">保存</button>
+                <button id="cancelTheme">取消</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
