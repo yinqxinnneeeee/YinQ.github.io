@@ -389,8 +389,23 @@ footer {
 .admin-panel-content {
     padding: 20px;
     transition: max-height 0.3s ease;
-    max-height: 500px;
+    max-height: 600px;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #333 #f0f0f0;
+}
+
+.admin-panel-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.admin-panel-content::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+.admin-panel-content::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 4px;
 }
 
 .admin-panel-content.collapsed {
