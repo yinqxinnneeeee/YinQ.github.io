@@ -390,7 +390,7 @@ footer {
     padding: 20px;
     transition: max-height 0.3s ease;
     max-height: 500px;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .admin-panel-content.collapsed {
