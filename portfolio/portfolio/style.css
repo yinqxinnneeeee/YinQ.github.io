@@ -1,0 +1,772 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 登录页面 */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* 主页面 */
+header {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: -2px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+.hero {
+    background-color: #f5f5f5;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.timeline h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.timeline-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #ddd;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    width: 50%;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 40px;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 40px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #333;
+}
+
+.timeline-item:nth-child(odd)::before {
+    right: 0;
+    transform: translateX(50%);
+}
+
+.timeline-item:nth-child(even)::before {
+    left: 0;
+    transform: translateX(-50%);
+}
+
+.works {
+    padding: 60px 20px;
+    background-color: #f5f5f5;
+}
+
+.tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    gap: 10px;
+}
+
+.tag {
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tag.active {
+    background-color: #333;
+    color: #fff;
+}
+
+.works-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.work-item {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.work-item:hover {
+    transform: translateY(-5px);
+}
+
+.work-item h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.work-item p {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.work-item .media-gallery {
+    margin-bottom: 15px;
+}
+
+.work-item .media-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.work-item .media-gallery img {
+    flex: 1 1 calc(50% - 10px);
+    min-width: 100px;
+    max-width: 100%;
+    height: 120px;
+    object-fit: cover;
+    margin-bottom: 0;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.work-item .media-gallery img:hover {
+    transform: scale(1.05);
+}
+
+.work-item .media-gallery img:only-child {
+    flex: 1 1 100%;
+    height: 200px;
+}
+
+.work-item .audio-list {
+    margin-bottom: 15px;
+}
+
+.work-item .audio-list audio {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.category {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* 作品详情页面 */
+.work-detail-page header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-button {
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.work-detail {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.work-detail-header {
+    margin-bottom: 30px;
+}
+
+.work-detail-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.work-detail-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+.work-detail-media {
+    margin-bottom: 40px;
+}
+
+.work-detail-media img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    display: block;
+}
+
+/* 响应式图片布局 */
+.work-detail-media {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.work-detail-media img {
+    flex: 1 1 calc(50% - 15px);
+    min-width: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.work-detail-media img:hover {
+    transform: scale(1.02);
+}
+
+/* 单张图片的处理 */
+.work-detail-media img:only-child {
+    flex: 1 1 100%;
+    max-height: 60vh;
+    object-fit: contain;
+}
+
+.work-detail-media audio {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.work-detail-actions {
+    margin-top: 40px;
+    text-align: right;
+}
+
+.edit-button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* 管理面板 */
+.admin-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    width: 300px;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.admin-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-panel-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #666;
+    transition: transform 0.3s ease;
+}
+
+.admin-panel-content {
+    padding: 20px;
+    transition: max-height 0.3s ease;
+    max-height: 500px;
+    overflow: hidden;
+}
+
+.admin-panel-content.collapsed {
+    max-height: 0;
+    padding: 0;
+}
+
+.admin-panel-content.collapsed + .toggle-button {
+    transform: rotate(-90deg);
+}
+
+.settings-section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.settings-section h4 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.settings-section label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.settings-section button {
+    padding: 8px 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.works-section h4 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.password-form {
+    margin-bottom: 20px;
+}
+
+.password-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.password-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.admin-content h5 {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+#addWorkForm input,
+#addWorkForm select,
+#addWorkForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#addWorkForm textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.media-upload {
+    margin-bottom: 10px;
+}
+
+.media-upload label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.media-upload input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#addWorkForm button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* 模态框 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.modal-content h3 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.modal-content textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.modal-buttons button {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#saveEdit,
+#saveWorkEdit {
+    background-color: #333;
+    color: #fff;
+}
+
+#cancelEdit,
+#cancelWorkEdit {
+    background-color: #ddd;
+    color: #333;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .timeline-container::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 60px !important;
+        padding-right: 0 !important;
+        text-align: left !important;
+    }
+    
+    .timeline-item::before {
+        left: 20px !important;
+        transform: none !important;
+    }
+    
+    .admin-panel {
+        position: static;
+        width: 100%;
+        margin: 20px;
+    }
+    
+    .login-container {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .works-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .work-detail-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .work-detail-page header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rain {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+    }
+}
+
+.work-item {
+    animation: fadeIn 0.3s ease;
+}
+
+.work-detail {
+    animation: fadeIn 0.5s ease;
+}
+
+/* 主题设置相关样式 */
+.theme-option {
+    margin-bottom: 15px;
+}
+
+.theme-option label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.theme-option input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.theme-option select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#addTimelineItem {
+    width: 100%;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.timeline-item-edit {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.timeline-item-edit input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.timeline-item-edit button {
+    padding: 5px 10px;
+    background-color: #ff4444;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#addEmoji {
+    padding: 8px 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+/* 现有媒体文件样式 */
+.existing-media {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.media-item {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.media-item img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.media-item audio {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.remove-media {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff4444;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
