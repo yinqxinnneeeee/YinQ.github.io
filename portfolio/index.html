@@ -53,6 +53,56 @@
         <footer>
             <p id="footerText">© 2026 个人作品集</p>
         </footer>
+        
+        <!-- 管理面板 -->
+        <div class="admin-panel" id="adminPanel">
+            <div class="admin-panel-header">
+                <h3>管理面板</h3>
+                <button id="toggleAdminPanel" class="toggle-button">▼</button>
+            </div>
+            <div class="admin-panel-content" id="adminPanelContent">
+                <div class="settings-section">
+                    <h4>网站设置</h4>
+                    <label>
+                        <input type="checkbox" id="publicAccess"> 开放访问
+                    </label>
+                    <button id="editTextBtn">编辑文字内容</button>
+                    <button id="editTimelineBtn">编辑时间轴</button>
+                    <button id="themeSettingsBtn">主题设置</button>
+                </div>
+                <div class="works-section">
+                    <h4>作品管理</h4>
+                    <div class="password-form">
+                        <input type="password" id="worksPassword" placeholder="请输入作品管理密码">
+                        <button id="worksLoginBtn">登录</button>
+                    </div>
+                    <div class="admin-content" id="adminContent" style="display: none;">
+                        <h5>添加作品</h5>
+                        <form id="addWorkForm">
+                            <input type="text" id="workTitle" placeholder="作品标题">
+                            <select id="workCategory">
+                                <option value="美术">美术</option>
+                                <option value="音乐">音乐</option>
+                                <option value="游戏">游戏</option>
+                                <option value="小说">小说</option>
+                                <option value="剧本">剧本</option>
+                                <option value="漫画">漫画</option>
+                            </select>
+                            <textarea id="workDescription" placeholder="作品简介"></textarea>
+                            <div class="media-upload">
+                                <label>图片</label>
+                                <input type="file" id="workImages" accept="image/*" multiple>
+                            </div>
+                            <div class="media-upload">
+                                <label>音频</label>
+                                <input type="file" id="workAudios" accept="audio/*" multiple>
+                            </div>
+                            <button type="submit">添加</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <!-- 作品详情页面 -->
@@ -81,56 +131,6 @@
         <footer>
             <p id="detailFooterText">© 2026 个人作品集</p>
         </footer>
-    </div>
-    
-    <!-- 管理面板 -->
-    <div class="admin-panel" id="adminPanel">
-        <div class="admin-panel-header">
-            <h3>管理面板</h3>
-            <button id="toggleAdminPanel" class="toggle-button">▼</button>
-        </div>
-        <div class="admin-panel-content" id="adminPanelContent">
-            <div class="settings-section">
-                <h4>网站设置</h4>
-                <label>
-                    <input type="checkbox" id="publicAccess"> 开放访问
-                </label>
-                <button id="editTextBtn">编辑文字内容</button>
-                <button id="editTimelineBtn">编辑时间轴</button>
-                <button id="themeSettingsBtn">主题设置</button>
-            </div>
-            <div class="works-section">
-                <h4>作品管理</h4>
-                <div class="password-form">
-                    <input type="password" id="worksPassword" placeholder="请输入作品管理密码">
-                    <button id="worksLoginBtn">登录</button>
-                </div>
-                <div class="admin-content" id="adminContent" style="display: none;">
-                    <h5>添加作品</h5>
-                    <form id="addWorkForm">
-                        <input type="text" id="workTitle" placeholder="作品标题">
-                        <select id="workCategory">
-                            <option value="美术">美术</option>
-                            <option value="音乐">音乐</option>
-                            <option value="游戏">游戏</option>
-                            <option value="小说">小说</option>
-                            <option value="剧本">剧本</option>
-                            <option value="漫画">漫画</option>
-                        </select>
-                        <textarea id="workDescription" placeholder="作品简介"></textarea>
-                        <div class="media-upload">
-                            <label>图片</label>
-                            <input type="file" id="workImages" accept="image/*" multiple>
-                        </div>
-                        <div class="media-upload">
-                            <label>音频</label>
-                            <input type="file" id="workAudios" accept="audio/*" multiple>
-                        </div>
-                        <button type="submit">添加</button>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
     
     <!-- 文字编辑模态框 -->
